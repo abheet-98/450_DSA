@@ -1,0 +1,83 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+class StackImplement{
+    
+    int top;
+    int n;
+    int arr[1000];
+    
+    public :
+    StackImplement(int size){
+        top = -1;
+        n = size;
+    }
+    
+    void push(int x){
+        if(top == n-1){
+            cout<<"Stack Overflow \n";
+            return;
+        }
+        arr[++top] = x;
+        cout<<x<<" pushed to the stack\n";
+    }
+    
+    int pop(){
+        if(top == -1){
+            cout<<"Stack underflow !\n";
+            return -1;
+        }
+        return arr[top--];
+    }
+    
+    int topp(){
+        if(top == -1){
+            cout<<"Stack underflow !\n";
+            return -1;
+        }
+        return arr[top];
+    }
+    
+};
+
+int main() {
+    
+    int n;
+    
+    cout<<"Enter the size of stack \n";
+    cin>>n;
+    
+    
+    StackImplement st(n);
+    
+    int ch;
+    
+    do{
+        cout<<"Enter \n1 - Push \n2 - Pop \n3 - Top \n4 - Exit\n";
+        cin>>ch;
+        int ans;
+        switch(ch){
+            case 1 : cout<<"Enter the value to push ";
+                     int val;
+                     cin>>val;
+                     st.push(val);
+                     break;
+            case 2 : ans = st.pop();
+                     if(ans != -1){
+                         cout<<"Popped element is : "<<ans<<endl ;
+                     }                     
+                     break;
+            case 3 : ans = st.topp();
+                     if(ans != -1){
+                         cout<<"Top element is : "<<ans<<endl;
+                     }
+                     break;
+            case 4 : cout<<"Exited the program !\n";
+                     break;
+            default: cout<<"Invalid choice !\n";
+        }
+    } while(ch != 4);
+
+    
+	return 0;
+}
